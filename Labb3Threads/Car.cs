@@ -19,7 +19,7 @@ namespace Labb3Threads
 
         private static int CursorPos = 6;
 
-        private static int globalFinishPlace;
+        private static int globalFinishPlace = 0;
 
         public Car(int id, string name)
         {
