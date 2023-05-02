@@ -19,8 +19,6 @@ namespace Labb3Threads
 
         private static int CursorPos = 6;
 
-        private static int globalFinishPlace = 0;
-
         public Car(int id, string name)
         {
             ID = id;
@@ -38,6 +36,8 @@ namespace Labb3Threads
             c1,
             c2
         };
+
+        private static List<Car> finishedRace = new List<Car>();
 
         //public static List<Car> finishedRace = new List<Car>();
 
@@ -87,9 +87,8 @@ namespace Labb3Threads
                 UpdatePositions();
                 Thread.Sleep(1000);
             }
-            //finishedRace.Add(this);
-            myFinishPlace = globalFinishPlace;
-            globalFinishPlace++;
+            finishedRace.Add(this);
+            myFinishPlace = finishedRace.FindIndex(x => x.ID == ID);
             Console.SetCursorPosition(0, CursorPos++);
             Console.WriteLine($"{Name} has finished the race at place #{myFinishPlace + 1}!");
             if (myFinishPlace == 0)
